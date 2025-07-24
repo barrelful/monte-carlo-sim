@@ -14,14 +14,19 @@ This project simulates project completion duration using Monte Carlo methods wit
 
 ```
 monte-carlo-sim/
-├── main.py                      # Entry point for simulation
-├── simulation.py                # Core logic for PERT and task graph
-├── Monte Carlo CSV updated.csv # Sample input file
-├── monte_carlo_results.csv     # Output simulation results
-├── duration_histogram.png      # Project duration histogram
-├── duration_cdf.png            # Cumulative duration chart
-├── requirements.txt            # Python dependencies
-└── README.md                   # This file
+├── data/
+│ └── Monte Carlo CSV updated.csv # Input data (CSV format)
+├── outputs/
+│ ├── monte_carlo_results.csv # Simulation results
+│ ├── duration_histogram.png # Histogram plot
+│ └── duration_cdf.png # CDF plot
+├── src/
+│ ├── init.py # Makes src a package
+│ └── simulation.py # All simulation logic
+├── main.py # Entry point: calls the simulation
+├── requirements.txt # Python dependencies
+├── LICENSE # GPL v3 license
+└── README.md # Project documentation
 ```
 
 ---
