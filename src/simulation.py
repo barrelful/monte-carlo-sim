@@ -120,7 +120,7 @@ def plot_results(durations):
     plt.legend()
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("duration_histogram.png")
+    plt.savefig("output/duration_histogram.png")
     plt.close()
 
     sorted_durations = np.sort(durations)
@@ -132,7 +132,7 @@ def plot_results(durations):
     plt.ylabel("Probability")
     plt.grid(True)
     plt.tight_layout()
-    plt.savefig("duration_cdf.png")
+    plt.savefig("output/duration_cdf.png")
     plt.close()
 
 # Run full pipeline
@@ -164,5 +164,5 @@ def run_simulation(input_file, iterations):
     print(f"Most Likely Critical Path: {' -> '.join(critical_path)}")
     print(f"Confidence in Critical Path: {confidence*100:.1f}%")
 
-    pd.DataFrame({"Simulated Duration": durations}).to_csv("monte_carlo_results.csv", index=False)
+    pd.DataFrame({"Simulated Duration": durations}).to_csv("output/monte_carlo_results.csv", index=False)
     plot_results(durations)
