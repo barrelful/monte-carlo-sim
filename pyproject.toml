@@ -62,6 +62,7 @@ lint.isort.force-sort-within-sections = true
 python_version = "3.12"
 strict = true
 ignore_missing_imports = true
+plugins = ["numpy.typing.mypy_plugin"]
 
 [tool.pre-commit]
 repos = [
