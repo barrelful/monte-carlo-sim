@@ -33,20 +33,35 @@ monte-carlo-sim/
 
 ## ▶️ Usage
 
-1. Create a virtual environment:
+1. Install [uv](https://github.com/astral-sh/uv):
    ```bash
-   python3 -m venv venv
-   source venv/bin/activate
+   pipx install uv
    ```
 
-2. Install dependencies:
+1. Install all runtime dependencies::
    ```bash
-   pip install -r requirements.txt
+   uv sync --frozen
    ```
 
-3. Run the simulation:
+1. Run the simulation:
    ```bash
-   python main.py
+   uv python main.py
+   ```
+
+---
+
+## 🛠 Development Setup
+To install all dependencies including development extras and pre-commit hooks:
+
+1. Install all dependencies:
+   ```bash
+   uv sync --all-extras --frozen
+   pre-commit install
+   ```
+
+1. Install all runtime dependencies:
+   ```bash
+   uv sync --frozen
    ```
 
 ---
