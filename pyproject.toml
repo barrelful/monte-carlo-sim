@@ -1,0 +1,70 @@
+[project]
+name = "monte-carlo-sim"
+version = "0.1.0"
+description = "Monte Carlo simulation for estimating project duration with task dependencies"
+authors = [
+  { name = "barrelful", email = "unvaguely_lay@aleeas.com" }
+]
+license = { text = "GPL-3.0" }
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+
+dependencies = [
+  "pandas",
+  "numpy",
+  "networkx",
+  "matplotlib",
+  "new-package>=0.0.1,<0.1.0"
+]
+
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Mathematics",
+  "Topic :: Software Development :: Libraries :: Python Modules"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pre-commit",
+  "ruff",
+  "mypy"
+]
+
+[project.urls]
+Homepage = "https://github.com/barrelful/monte-carlo-sim"
+Repository = "https://github.com/barrelful/monte-carlo-sim"
+Documentation = "https://github.com/barrelful/monte-carlo-sim#readme"
+Changelog = "https://github.com/barrelful/monte-carlo-sim/releases"
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/monte_carlo_sim"]
+
+[tool.ruff]
+line-length = 100
+lint.ignore = ["E501"]
+lint.select = ["E", "F", "I"]
+lint.isort.force-single-line = true
+lint.isort.force-sort-within-sections = true
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+ignore_missing_imports = true
+
+[tool.pre-commit]
+repos = [
+  { repo = "https://github.com/charliermarsh/ruff-pre-commit", rev = "v0.4.0", hooks = [ { id = "ruff" } ] },
+  { repo = "https://github.com/pre-commit/pre-commit-hooks", rev = "v4.4.0", hooks = [ { id = "end-of-file-fixer" }, { id = "trailing-whitespace" } ] }
+]

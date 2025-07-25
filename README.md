@@ -62,7 +62,7 @@ Your CSV should contain the following columns:
 | 3           | 5                   | 7                    | 9                    | 1SS;2FS      |
 | 4           | 4                   | 5                    | 10                   | 2FF-3SS      |
 
-✅ Use `;` or `-` as separators for multiple dependencies.  
+✅ Use `;` or `-` as separators for multiple dependencies.
 ✅ Dependencies like `2FS` mean "Start task 2 when predecessor finishes."
 
 ---

@@ -2,7 +2,7 @@ import os
 import sys
 
 # Add the 'src' folder to the Python module search path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src"))
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "src/monte_carlo_sim"))
 
 from simulation import run_simulation
 
