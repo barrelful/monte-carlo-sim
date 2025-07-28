@@ -45,7 +45,7 @@ monte-carlo-sim/
 
 1. Run the simulation:
    ```bash
-   uv python main.py
+   uv run main.py
    ```
 
 ---
