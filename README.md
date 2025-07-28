@@ -53,15 +53,10 @@ monte-carlo-sim/
 ## 🛠 Development Setup
 To install all dependencies including development extras and pre-commit hooks:
 
-1. Install all dependencies:
+Install all dependencies:
    ```bash
    uv sync --all-extras --frozen
    pre-commit install
-   ```
-
-1. Install all runtime dependencies:
-   ```bash
-   uv sync --frozen
    ```
 
 ---
