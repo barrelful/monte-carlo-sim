@@ -1,6 +1,6 @@
 Activity Id,Optimistic Estimate,Most Likely Estimate,Pessimistic Estimate,Dependency
 1,2,3,6,
-2,3,4,7,1FS
+2,3,5,7,1FS
 3,4,5,12,1FS
 4,4,5,10,2FS;3FS
 5,9,12,18,4FS
