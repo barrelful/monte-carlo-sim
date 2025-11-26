@@ -85,9 +85,7 @@ def simulate_project_duration(G: nx.DiGraph, iterations: int) -> List[float]:
     return durations
 
 
-def estimate_critical_paths(
-    G: nx.DiGraph, iterations: int
-) -> List[Tuple[List[str], float]]:
+def estimate_critical_paths(G: nx.DiGraph, iterations: int) -> List[Tuple[List[str], float]]:
     path_counts: Dict[Tuple[str, ...], int] = {}
     for _ in range(iterations):
         sampled: Dict[str, float] = {
