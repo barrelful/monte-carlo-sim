@@ -85,7 +85,7 @@ def simulate_project_duration(G: nx.DiGraph, iterations: int) -> List[float]:
     return durations
 
 
-def estimate_critical_path(G: nx.DiGraph, iterations: int) -> Tuple[List[str], float]:
+def estimate_critical_paths(G: nx.DiGraph, iterations: int) -> List[Tuple[List[str], float]]:
     path_counts: Dict[Tuple[str, ...], int] = {}
     for _ in range(iterations):
         sampled: Dict[str, float] = {
@@ -111,9 +111,8 @@ def estimate_critical_path(G: nx.DiGraph, iterations: int) -> Tuple[List[str], f
         key = tuple(longest_path)
         path_counts[key] = path_counts.get(key, 0) + 1
 
-    most_common = max(path_counts, key=lambda k: path_counts[k])
-    confidence = path_counts[most_common] / iterations
-    return list(most_common), confidence
+    sorted_paths = sorted(path_counts.items(), key=lambda item: item[1], reverse=True)
+    return [(list(path), count / iterations) for path, count in sorted_paths]
 
 
 def plot_results(durations: List[float]) -> None:
@@ -174,14 +173,16 @@ def run_simulation(input_file: str, iterations: int) -> None:
 
     G = build_graph(df)
     durations = simulate_project_duration(G, iterations)
-    critical_path, confidence = estimate_critical_path(G, 1000)
+    critical_paths = estimate_critical_paths(G, iterations)
 
     print("--- Simulation Results ---")
     print(f"Mean Duration: {np.mean(durations):.2f}")
     print(f"Median Duration: {np.median(durations):.2f}")
     print(f"90th Percentile Duration: {np.percentile(durations, 90):.2f}")
-    print(f"Most Likely Critical Path: {' -> '.join(critical_path)}")
-    print(f"Confidence in Critical Path: {confidence * 100:.1f}%")
+    print("Critical Path Probabilities:")
+    for path, probability in critical_paths:
+        formatted_path = " -> ".join(path) if path else "(no path)"
+        print(f"- {formatted_path}: {probability * 100:.1f}%")
 
     pd.DataFrame({"Simulated Duration": durations}).to_csv(
         "output/monte_carlo_results.csv",
